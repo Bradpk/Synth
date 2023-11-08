@@ -5,12 +5,17 @@ import styles from './piano.module.css';
 import * as Tone from "tone";
 
 function Synth() {
+    const [oscillatorType, setOscillatorType] = useState("sine");
 
     const synth = new Tone.Synth({
         oscillator: {
-          type: "sine", 
+          type: oscillatorType,
         },
-      }).toDestination();
+    }).toDestination();
+
+    const handleOscillatorChange = (type) => {
+        setOscillatorType(type);
+    };
       
 
     const C2 = () => {
@@ -257,6 +262,14 @@ function Synth() {
 
 
     return (
+        <>
+        <h4 className={styles.heading}>Oscillator Selection</h4>
+        <div className={styles.oscillator}>
+            <button onClick={() => handleOscillatorChange("sine")}>Sine</button>
+            <button onClick={() => handleOscillatorChange("square")}>Square</button>
+            <button onClick={() => handleOscillatorChange("sawtooth")}>Saw Tooth</button>
+            <button onClick={() => handleOscillatorChange("triangle")}>Triangle</button>
+        </div>
         <div className={styles.piano}>
             <button className={styles.key} onMouseEnter={C2} ></button>
             <button className={styles.black} onMouseEnter={Csharp2} ></button>
@@ -309,6 +322,7 @@ function Synth() {
          
        
         </div>
+        </>
     )
 }
 
