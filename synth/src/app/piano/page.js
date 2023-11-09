@@ -23,8 +23,19 @@ function Synth() {
         },
     }).toDestination();
 
+    if (oscillatorType === "square") {
+        synth.volume.value = -15;
+    } else if (oscillatorType === "sawtooth") {
+        synth.volume.value = -15;
+    } else if (oscillatorType === "triangle") {
+        synth.volume.value = -2;
+    } else {
+        synth.volume.value = 0;
+    }
+
     const handleOscillatorChange = (type) => {
         setOscillatorType(type);
+
     };
 
     const handleEnvelopeChange = () => {
@@ -48,7 +59,7 @@ function Synth() {
             handleMouseDown(note);
         }
     };
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
     return (
         <>
             <h4 className={styles.heading}>Oscillator Selection</h4>
