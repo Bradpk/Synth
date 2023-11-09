@@ -10,6 +10,7 @@ function Synth() {
     const [decay, setDecay] = useState(0.2);
     const [sustain, setSustain] = useState(1);
     const [release, setRelease] = useState(1.0);
+    const [playingNote, setPlayingNote] = useState(null);
 
     const synth = new Tone.Synth({
         oscillator: {
@@ -52,8 +53,9 @@ function Synth() {
     const handleMouseDown = (note) => {
         const now = Tone.now();
         synth.triggerAttackRelease(note, "4n", now);
+        setPlayingNote(note);
     };
-
+    
     const handleMouseEnter = (note, e) => {
         if (e.buttons === 1) {
             handleMouseDown(note);
