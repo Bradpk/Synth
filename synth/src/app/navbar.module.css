@@ -1,6 +1,7 @@
 
 .navItems {
     color: rgb(114, 114, 255);
+    font-size: 40px;
     display: flex;
     list-style: none;
     justify-content: space-around;
