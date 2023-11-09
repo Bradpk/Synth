@@ -6,10 +6,10 @@ import * as Tone from "tone";
 
 function Synth() {
     const [oscillatorType, setOscillatorType] = useState("sine");
-    const [attack, setAttack] = useState(0);
-    const [decay, setDecay] = useState(0.2);
-    const [sustain, setSustain] = useState(1);
-    const [release, setRelease] = useState(1.0);
+    const [attack, setAttack] = useState(0.1);
+    const [decay, setDecay] = useState(0.1);
+    const [sustain, setSustain] = useState(0.1);
+    const [release, setRelease] = useState(0.1);
     const [playingNote, setPlayingNote] = useState(null);
 
     const synth = new Tone.Synth({

@@ -40,14 +40,15 @@
     flex-direction: column;
     justify-content: center;
     margin-right: 20%;
+    width: 170px;
 }
 
 .labels {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: -29%;
-    margin-top: 20px;
+    margin-right: -31%;
+    margin-top: 24px;
 }
 
 .heading {
