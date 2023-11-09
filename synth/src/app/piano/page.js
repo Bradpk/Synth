@@ -25,9 +25,6 @@ function Synth() {
 
     const handleOscillatorChange = (type) => {
         setOscillatorType(type);
-        if(oscillatorType === "square"){
-            new Tone.Gain(0.5);
-        }
     };
 
     const handleEnvelopeChange = () => {
@@ -51,7 +48,7 @@ function Synth() {
             handleMouseDown(note);
         }
     };
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
     return (
         <>
             <h4 className={styles.heading}>Oscillator Selection</h4>
