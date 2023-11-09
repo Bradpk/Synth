@@ -25,12 +25,12 @@
 
 .oscillator {
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
 
 .envelope {
     display: flex;
-    justify-content: right;
+    justify-content: center;
 }
 
 .heading {
