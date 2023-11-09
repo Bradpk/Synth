@@ -6,322 +6,118 @@ import * as Tone from "tone";
 
 function Synth() {
     const [oscillatorType, setOscillatorType] = useState("sine");
+    const [attack, setAttack] = useState(0.1);
+    const [decay, setDecay] = useState(0.2);
+    const [sustain, setSustain] = useState(1);
+    const [release, setRelease] = useState(1.0);
 
     const synth = new Tone.Synth({
         oscillator: {
-          type: oscillatorType,
+            type: oscillatorType,
+        },
+        envelope: {
+            attack,
+            decay,
+            sustain,
+            release,
         },
     }).toDestination();
 
     const handleOscillatorChange = (type) => {
         setOscillatorType(type);
+        if(oscillatorType === "square"){
+            new Tone.Gain(0.5);
+        }
     };
-      
 
-    const C2 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("C2", "4n", now);
-    }
+    const handleEnvelopeChange = () => {
+        synth.set({
+            envelope: {
+                attack,
+                decay,
+                sustain,
+                release,
+            },
+        });
+    };
 
-    const Csharp2 = () => {
+    const handleMouseDown = (note) => {
         const now = Tone.now();
-        synth.triggerAttackRelease("C#2", "4n", now);
-    }
+        synth.triggerAttackRelease(note, "4n", now);
+    };
 
-    const D2 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("D2", "4n", now);
-    }
-
-    const Dsharp2 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("D#2", "4n", now);
-    }
-
-    const E2 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("E2", "4n", now);
-    }
-
-    const F2 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("F2", "4n", now);
-    }
-
-    const Fsharp2 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("F#2", "4n", now);
-    }
-
-    const G2 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("G2", "4n", now);
-    }
-
-    const Gsharp2 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("G#2", "4n", now);
-    }
-
-    const A2 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("A2", "4n", now);
-    }
-
-    const Asharp2 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("A#2", "4n", now);
-    }
-
-    const B2 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("B2", "4n", now);
-    }
-//-----------------------------------------------------------------------------------------------
-    const C3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("C3", "4n", now);
-    }
-
-    const Csharp3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("C#3", "4n", now);
-    }
-
-    const D3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("D3", "4n", now);
-    }
-
-    const Dsharp3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("D#3", "4n", now);
-    }
-
-    const E3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("E3", "4n", now);
-    }
-
-    const F3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("F3", "4n", now);
-    }
-
-    const Fsharp3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("F#3", "4n", now);
-    }
-
-    const G3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("G3", "4n", now);
-    }
-
-    const Gsharp3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("G#3", "4n", now);
-    }
-
-    const A3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("A3", "4n", now);
-    }
-
-    const Asharp3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("A#3", "4n", now);
-    }
-
-    const B3 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("B3", "4n", now);
-    }
-    //-----------------------------------------------------------------------------------------------
-    const C4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("C4", "4n", now);
-    }
-
-    const Csharp4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("C#4", "4n", now);
-    }
-
-    const D4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("D4", "4n", now);
-    }
-
-    const Dsharp4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("D#4", "4n", now);
-    }
-
-    const E4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("E4", "4n", now);
-    }
-
-    const F4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("F4", "4n", now);
-    }
-
-    const Fsharp4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("F#4", "4n", now);
-    }
-
-    const G4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("G4", "4n", now);
-    }
-
-    const Gsharp4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("G#4", "4n", now);
-    }
-
-    const A4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("A4", "4n", now);
-    }
-
-    const Asharp4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("A#4", "4n", now);
-    }
-
-    const B4 = () => {
-        const now = Tone.now();
-        synth.triggerAttackRelease("B4", "4n", now);
-    }
-        //-----------------------------------------------------------------------------------------------
-        const C5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("C5", "4n", now);
+    const handleMouseEnter = (note, e) => {
+        if (e.buttons === 1) {
+            handleMouseDown(note);
         }
-    
-        const Csharp5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("C#5", "4n", now);
-        }
-    
-        const D5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("D5", "4n", now);
-        }
-    
-        const Dsharp5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("D#5", "4n", now);
-        }
-    
-        const E5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("E5", "4n", now);
-        }
-    
-        const F5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("F5", "4n", now);
-        }
-    
-        const Fsharp5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("F#5", "4n", now);
-        }
-    
-        const G5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("G5", "4n", now);
-        }
-    
-        const Gsharp5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("G#5", "4n", now);
-        }
-    
-        const A5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("A5", "4n", now);
-        }
-    
-        const Asharp5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("A#5", "4n", now);
-        }
-    
-        const B5 = () => {
-            const now = Tone.now();
-            synth.triggerAttackRelease("B5", "4n", now);
-        }
-    
-
-
-
+    };
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
     return (
         <>
-        <h4 className={styles.heading}>Oscillator Selection</h4>
-        <div className={styles.oscillator}>
-            <button onClick={() => handleOscillatorChange("sine")}>Sine</button>
-            <button onClick={() => handleOscillatorChange("square")}>Square</button>
-            <button onClick={() => handleOscillatorChange("sawtooth")}>Saw Tooth</button>
-            <button onClick={() => handleOscillatorChange("triangle")}>Triangle</button>
-        </div>
-        <div className={styles.piano}>
-            <button className={styles.key} onMouseEnter={C2} ></button>
-            <button className={styles.black} onMouseEnter={Csharp2} ></button>
-            <button className={styles.key} onMouseEnter={D2} ></button>
-            <button className={styles.black} onMouseEnter={Dsharp2} ></button>
-            <button className={styles.key} onMouseEnter={E2} ></button>
-            <button className={styles.key} onMouseEnter={F2} ></button>
-            <button className={styles.black} onMouseEnter={Fsharp2} ></button>
-            <button className={styles.key} onMouseEnter={G2} ></button>
-            <button className={styles.black} onMouseEnter={Gsharp2} ></button>
-            <button className={styles.key} onMouseEnter={A2} ></button>
-            <button className={styles.black} onMouseEnter={Asharp2} ></button>
-            <button className={styles.key} onMouseEnter={B2} ></button>
-            <button className={styles.key} onMouseEnter={C3} ></button>
-            <button className={styles.black} onMouseEnter={Csharp3} ></button>
-            <button className={styles.key} onMouseEnter={D3} ></button>
-            <button className={styles.black} onMouseEnter={Dsharp3} ></button>
-            <button className={styles.key} onMouseEnter={E3} ></button>
-            <button className={styles.key} onMouseEnter={F3} ></button>
-            <button className={styles.black} onMouseEnter={Fsharp3} ></button>
-            <button className={styles.key} onMouseEnter={G3} ></button>
-            <button className={styles.black} onMouseEnter={Gsharp3} ></button>
-            <button className={styles.key} onMouseEnter={A3} ></button>
-            <button className={styles.black} onMouseEnter={Asharp3} ></button>
-            <button className={styles.key} onMouseEnter={B3} ></button>
-            <button className={styles.key} onMouseEnter={C4} ></button>
-            <button className={styles.black} onMouseEnter={Csharp4} ></button>
-            <button className={styles.key} onMouseEnter={D4} ></button>
-            <button className={styles.black} onMouseEnter={Dsharp4} ></button>
-            <button className={styles.key} onMouseEnter={E4} ></button>
-            <button className={styles.key} onMouseEnter={F4} ></button>
-            <button className={styles.black} onMouseEnter={Fsharp4} ></button>
-            <button className={styles.key} onMouseEnter={G4} ></button>
-            <button className={styles.black} onMouseEnter={Gsharp4} ></button>
-            <button className={styles.key} onMouseEnter={A4} ></button>
-            <button className={styles.black} onMouseEnter={Asharp4} ></button>
-            <button className={styles.key} onMouseEnter={B4} ></button>
-            <button className={styles.key} onMouseEnter={C5} ></button>
-            <button className={styles.black} onMouseEnter={Csharp5} ></button>
-            <button className={styles.key} onMouseEnter={D5} ></button>
-            <button className={styles.black} onMouseEnter={Dsharp5} ></button>
-            <button className={styles.key} onMouseEnter={E5} ></button>
-            <button className={styles.key} onMouseEnter={F5} ></button>
-            <button className={styles.black} onMouseEnter={Fsharp5} ></button>
-            <button className={styles.key} onMouseEnter={G5} ></button>
-            <button className={styles.black} onMouseEnter={Gsharp5} ></button>
-            <button className={styles.key} onMouseEnter={A5} ></button>
-            <button className={styles.black} onMouseEnter={Asharp5} ></button>
-            <button className={styles.key} onMouseEnter={B5} ></button>
-         
-       
-        </div>
+            <h4 className={styles.heading}>Oscillator Selection</h4>
+            <div className={styles.oscillator}>
+                <button onClick={() => handleOscillatorChange("sine")}>Sine</button>
+                <button onClick={() => handleOscillatorChange("square")}>Square</button>
+                <button onClick={() => handleOscillatorChange("sawtooth")}>Saw Tooth</button>
+                <button onClick={() => handleOscillatorChange("triangle")}>Triangle</button>
+            </div>
+            <h4 className={styles.heading}>Envelope Settings</h4>
+            <div className={styles.envelope}>
+                <label>Attack: <input type="number" value={attack} onChange={(e) => setAttack(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} /></label>
+                <label>Decay: <input type="number" value={decay} onChange={(e) => setDecay(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} /></label>
+                <label>Sustain: <input type="number" value={sustain} onChange={(e) => setSustain(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} /></label>
+                <label>Release: <input type="number" value={release} onChange={(e) => setRelease(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} /></label>
+            </div>
+            <div className={styles.piano}>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("C2")} onMouseEnter={(e) => handleMouseEnter("C2", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("C#2")} onMouseEnter={(e) => handleMouseEnter("C#2", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("D2")} onMouseEnter={(e) => handleMouseEnter("D2", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("D#2")} onMouseEnter={(e) => handleMouseEnter("D#2", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("E2")} onMouseEnter={(e) => handleMouseEnter("E2", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("F2")} onMouseEnter={(e) => handleMouseEnter("F2", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("F#2")} onMouseEnter={(e) => handleMouseEnter("F#2", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("G2")} onMouseEnter={(e) => handleMouseEnter("G2", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("G#2")} onMouseEnter={(e) => handleMouseEnter("G#2", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("A2")} onMouseEnter={(e) => handleMouseEnter("A2", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("A#2")} onMouseEnter={(e) => handleMouseEnter("A#2", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("B2")} onMouseEnter={(e) => handleMouseEnter("B2", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("C3")} onMouseEnter={(e) => handleMouseEnter("C3", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("C#3")} onMouseEnter={(e) => handleMouseEnter("C#3", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("D3")} onMouseEnter={(e) => handleMouseEnter("D3", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("D#3")} onMouseEnter={(e) => handleMouseEnter("D#3", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("E3")} onMouseEnter={(e) => handleMouseEnter("E3", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("F3")} onMouseEnter={(e) => handleMouseEnter("F3", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("F#3")} onMouseEnter={(e) => handleMouseEnter("F#3", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("G3")} onMouseEnter={(e) => handleMouseEnter("G3", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("G#3")} onMouseEnter={(e) => handleMouseEnter("G#3", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("A3")} onMouseEnter={(e) => handleMouseEnter("A3", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("A#3")} onMouseEnter={(e) => handleMouseEnter("A#3", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("B3")} onMouseEnter={(e) => handleMouseEnter("B3", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("C4")} onMouseEnter={(e) => handleMouseEnter("C4", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("C#4")} onMouseEnter={(e) => handleMouseEnter("C#4", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("D4")} onMouseEnter={(e) => handleMouseEnter("D4", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("D#4")} onMouseEnter={(e) => handleMouseEnter("D#4", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("E4")} onMouseEnter={(e) => handleMouseEnter("E4", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("F4")} onMouseEnter={(e) => handleMouseEnter("F4", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("F#4")} onMouseEnter={(e) => handleMouseEnter("F#4", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("G4")} onMouseEnter={(e) => handleMouseEnter("G4", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("G#4")} onMouseEnter={(e) => handleMouseEnter("G#4", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("A4")} onMouseEnter={(e) => handleMouseEnter("A4", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("A#4")} onMouseEnter={(e) => handleMouseEnter("A#4", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("B4")} onMouseEnter={(e) => handleMouseEnter("B4", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("C5")} onMouseEnter={(e) => handleMouseEnter("C5", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("C#5")} onMouseEnter={(e) => handleMouseEnter("C#5", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("D5")} onMouseEnter={(e) => handleMouseEnter("D5", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("D#5")} onMouseEnter={(e) => handleMouseEnter("D#5", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("E5")} onMouseEnter={(e) => handleMouseEnter("E5", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("F5")} onMouseEnter={(e) => handleMouseEnter("F5", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("F#5")} onMouseEnter={(e) => handleMouseEnter("F#5", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("G5")} onMouseEnter={(e) => handleMouseEnter("G5", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("G#5")} onMouseEnter={(e) => handleMouseEnter("G#5", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("A5")} onMouseEnter={(e) => handleMouseEnter("A5", e)}></button>
+                <button className={styles.black} onMouseDown={() => handleMouseDown("A#5")} onMouseEnter={(e) => handleMouseEnter("A#5", e)}></button>
+                <button className={styles.key} onMouseDown={() => handleMouseDown("B5")} onMouseEnter={(e) => handleMouseEnter("B5", e)}></button>
+            </div>
         </>
     )
 }
