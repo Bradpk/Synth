@@ -61,5 +61,17 @@
 }
 
 .selected {
-    background-color: green;
+    background-color: rgb(1, 187, 1);
 }
+
+.buttonActive, .key:hover {
+    background-color: rgb(156, 156, 255);
+    transition: background-color 0.01s ease; 
+}
+
+.buttonActive, .black:hover {
+    background-color: rgb(52, 52, 93);
+    transition: background-color 0.01s ease; 
+}
+
+
