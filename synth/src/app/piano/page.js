@@ -39,16 +39,28 @@ function Synth() {
         setOscillatorType(type);
 
     };
-
+    
     const handleEnvelopeChange = () => {
+        // Validate and update only if the entered values are positive numbers
+        const positiveAttack = Math.max(0, parseFloat(attack));
+        const positiveDecay = Math.max(0, parseFloat(decay));
+        const positiveSustain = Math.max(0, parseFloat(sustain));
+        const positiveRelease = Math.max(0, parseFloat(release));
+    
         synth.set({
             envelope: {
-                attack,
-                decay,
-                sustain,
-                release,
+                attack: positiveAttack,
+                decay: positiveDecay,
+                sustain: positiveSustain,
+                release: positiveRelease,
             },
         });
+    
+        // Update the state with the positive values
+        setAttack(positiveAttack);
+        setDecay(positiveDecay);
+        setSustain(positiveSustain);
+        setRelease(positiveRelease);
     };
 
     const handleMouseDown = (note) => {
