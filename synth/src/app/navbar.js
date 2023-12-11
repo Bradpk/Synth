@@ -6,7 +6,7 @@ function Navbar(){
     return(
         <>
         <ul className={styles.navItems}>
-            <li><Link href="/piano">Virtual Synthesizer</Link></li>
+            <li><Link href="/piano">Enter Virtual Synthesizer</Link></li>
         </ul>
         </>
 

@@ -6,10 +6,10 @@ import * as Tone from "tone";
 
 function Synth() {
     const [oscillatorType, setOscillatorType] = useState("sine");
-    const [attack, setAttack] = useState(0.1);
-    const [decay, setDecay] = useState(0.1);
-    const [sustain, setSustain] = useState(0.1);
-    const [release, setRelease] = useState(0.1);
+    // const [attack, setAttack] = useState(0.1);
+    // const [decay, setDecay] = useState(0.1);
+    // const [sustain, setSustain] = useState(0.1);
+    // const [release, setRelease] = useState(0.1);
     const [activeButtons, setActiveButtons] = useState([]);
 
 
@@ -17,12 +17,12 @@ function Synth() {
         oscillator: {
             type: oscillatorType,
         },
-        envelope: {
-            attack,
-            decay,
-            sustain,
-            release,
-        },
+        // envelope: {
+        //     attack,
+        //     decay,
+        //     sustain,
+        //     release,
+        // },
     }).toDestination();
 
     if (oscillatorType === "square") {
@@ -40,28 +40,16 @@ function Synth() {
 
     };
     
-    const handleEnvelopeChange = () => {
-        // Validate and update only if the entered values are positive numbers
-        const positiveAttack = Math.max(0, parseFloat(attack));
-        const positiveDecay = Math.max(0, parseFloat(decay));
-        const positiveSustain = Math.max(0, parseFloat(sustain));
-        const positiveRelease = Math.max(0, parseFloat(release));
-    
-        synth.set({
-            envelope: {
-                attack: positiveAttack,
-                decay: positiveDecay,
-                sustain: positiveSustain,
-                release: positiveRelease,
-            },
-        });
-    
-        // Update the state with the positive values
-        setAttack(positiveAttack);
-        setDecay(positiveDecay);
-        setSustain(positiveSustain);
-        setRelease(positiveRelease);
-    };
+    // const handleEnvelopeChange = () => {
+    //     synth.set({
+    //         envelope: {
+    //             attack,
+    //             decay,
+    //             sustain,
+    //             release,
+    //         },
+    //     });
+    // };
 
     const handleMouseDown = (note) => {
         const now = Tone.now();
@@ -109,7 +97,7 @@ function Synth() {
         Triangle
     </button>
 </div>
-            <div className={styles.labels}>
+            {/* <div className={styles.labels}>
                 <label>Attack</label>
                 <label>Decay</label>
                 <label>Sustain</label>
@@ -121,7 +109,7 @@ function Synth() {
                 <input type="number" value={decay} onChange={(e) => setDecay(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
                 <input type="number" value={sustain} onChange={(e) => setSustain(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
                 <input type="number" value={release} onChange={(e) => setRelease(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
-            </div>
+            </div> */}
         </div>
             <div className={styles.piano}>
                 <button className={`${styles.key} ${activeButtons.includes("C2") ? styles.buttonActive : ""}`} onMouseDown={() => handleMouseDown("C2")} onMouseEnter={(e) => handleMouseEnter("C2", e)}></button>
