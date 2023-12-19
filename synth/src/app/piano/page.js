@@ -6,10 +6,10 @@ import * as Tone from "tone";
 
 function Synth() {
     const [oscillatorType, setOscillatorType] = useState("sine");
-    // const [attack, setAttack] = useState(0.1);
-    // const [decay, setDecay] = useState(0.1);
-    // const [sustain, setSustain] = useState(0.1);
-    // const [release, setRelease] = useState(0.1);
+    const [attack, setAttack] = useState(0);
+    const [decay, setDecay] = useState(0);
+    const [sustain, setSustain] = useState(0);
+    const [release, setRelease] = useState(0);
     const [activeButtons, setActiveButtons] = useState([]);
 
 
@@ -17,12 +17,12 @@ function Synth() {
         oscillator: {
             type: oscillatorType,
         },
-        // envelope: {
-        //     attack,
-        //     decay,
-        //     sustain,
-        //     release,
-        // },
+        envelope: {
+            attack,
+            decay,
+            sustain,
+            release,
+        },
     }).toDestination();
 
     if (oscillatorType === "square") {
@@ -40,16 +40,16 @@ function Synth() {
 
     };
     
-    // const handleEnvelopeChange = () => {
-    //     synth.set({
-    //         envelope: {
-    //             attack,
-    //             decay,
-    //             sustain,
-    //             release,
-    //         },
-    //     });
-    // };
+    const handleEnvelopeChange = () => {
+        synth.set({
+            envelope: {
+                attack,
+                decay,
+                sustain,
+                release,
+            },
+        });
+    };
 
     const handleMouseDown = (note) => {
         const now = Tone.now();
@@ -97,19 +97,25 @@ function Synth() {
         Triangle
     </button>
 </div>
-            {/* <div className={styles.labels}>
-                <label>Attack</label>
-                <label>Decay</label>
-                <label>Sustain</label>
-                <label>Release</label>
-            </div>
             <div className={styles.envelope}>
                 <h4 className={styles.heading}>Envelope Settings</h4>
-                <input type="number" value={attack} onChange={(e) => setAttack(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
-                <input type="number" value={decay} onChange={(e) => setDecay(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
-                <input type="number" value={sustain} onChange={(e) => setSustain(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
-                <input type="number" value={release} onChange={(e) => setRelease(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
-            </div> */}
+                <div>
+        <label>Attack: {attack}</label>
+        <input type="range" min="0" max="10" step="2" value={attack} onChange={(e) => setAttack(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
+    </div>
+    <div>
+        <label>Decay: {decay}</label>
+        <input type="range" min="0" max="10" step="1" value={decay} onChange={(e) => setDecay(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
+    </div>
+    <div>
+        <label>Sustain: {sustain}</label>
+        <input type="range" min="0" max="1" step="0.2" value={sustain} onChange={(e) => setSustain(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
+    </div>
+    <div>
+        <label>Release: {release}</label>
+        <input type="range" min="0" max="10" step="02" value={release} onChange={(e) => setRelease(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
+    </div>
+            </div>
         </div>
             <div className={styles.piano}>
                 <button className={`${styles.key} ${activeButtons.includes("C2") ? styles.buttonActive : ""}`} onMouseDown={() => handleMouseDown("C2")} onMouseEnter={(e) => handleMouseEnter("C2", e)}></button>
