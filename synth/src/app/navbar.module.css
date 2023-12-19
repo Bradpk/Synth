@@ -1,8 +1,8 @@
 
 .navItems {
-    color: rgb(156, 156, 255);
+    color: rgb(244, 244, 255);
     font-size: 50px;
-    font-family:cursive;
+    font-family:monospace;
     display: flex;
     list-style: none;
     justify-content: space-around;

@@ -6,10 +6,10 @@ import * as Tone from "tone";
 
 function Synth() {
     const [oscillatorType, setOscillatorType] = useState("sine");
-    const [attack, setAttack] = useState(0);
-    const [decay, setDecay] = useState(0);
-    const [sustain, setSustain] = useState(0);
-    const [release, setRelease] = useState(0);
+    const [attack, setAttack] = useState(1);
+    const [decay, setDecay] = useState(1);
+    const [sustain, setSustain] = useState(0.1);
+    const [release, setRelease] = useState(1);
     const [activeButtons, setActiveButtons] = useState([]);
 
 
@@ -101,7 +101,7 @@ function Synth() {
                 <h4 className={styles.heading}>Envelope Settings</h4>
                 <div>
         <label>Attack: {attack}</label>
-        <input type="range" min="0" max="10" step="2" value={attack} onChange={(e) => setAttack(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
+        <input type="range" min="0" max="10" step="1" value={attack} onChange={(e) => setAttack(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
     </div>
     <div>
         <label>Decay: {decay}</label>
@@ -109,11 +109,11 @@ function Synth() {
     </div>
     <div>
         <label>Sustain: {sustain}</label>
-        <input type="range" min="0" max="1" step="0.2" value={sustain} onChange={(e) => setSustain(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
+        <input type="range" min="0" max="1" step="0.1" value={sustain} onChange={(e) => setSustain(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
     </div>
     <div>
         <label>Release: {release}</label>
-        <input type="range" min="0" max="10" step="02" value={release} onChange={(e) => setRelease(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
+        <input type="range" min="0" max="10" step="1" value={release} onChange={(e) => setRelease(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
     </div>
             </div>
         </div>
