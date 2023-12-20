@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './piano.module.css';
 import * as Tone from "tone";
@@ -12,7 +12,7 @@ function Synth() {
     const [release, setRelease] = useState(1);
     const [activeButtons, setActiveButtons] = useState([]);
 
-
+    if (typeof window !== 'undefined') {   //<=== CHECK
     const synth = new Tone.Synth({
         oscillator: {
             type: oscillatorType,
@@ -24,6 +24,7 @@ function Synth() {
             release,
         },
     }).toDestination();
+
 
     if (oscillatorType === "square") {
         synth.volume.value = -15;
@@ -60,12 +61,13 @@ function Synth() {
           setActiveButtons([]);
         }, 10);
       };
-      
+    
       const handleMouseEnter = (note, e) => {
         if (e.buttons === 1) {
           handleMouseDown(note);
         }
       };
+  
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
     return (
         <>
@@ -170,5 +172,6 @@ function Synth() {
         </>
     )
 }
+}; // <=== 
 
 export default Synth 
