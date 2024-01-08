@@ -6,7 +6,7 @@ import * as Tone from "tone";
 
 function Synth() {
     const [oscillatorType, setOscillatorType] = useState("sine");
-    const [attack, setAttack] = useState(1);
+    const [attack, setAttack] = useState(0);
     const [decay, setDecay] = useState(1);
     const [sustain, setSustain] = useState(0.1);
     const [release, setRelease] = useState(1);
