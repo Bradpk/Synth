@@ -6,7 +6,7 @@ import * as Tone from "tone";
 
 function Synth() {
     const [oscillatorType, setOscillatorType] = useState("sine");
-    const [attack, setAttack] = useState(0.1);
+    const [attack, setAttack] = useState(0);
     const [decay, setDecay] = useState(1);
     const [sustain, setSustain] = useState(0.1);
     const [release, setRelease] = useState(1);
@@ -103,7 +103,7 @@ function Synth() {
                 <h4 className={styles.heading}>Envelope Settings</h4>
                 <div>
         <label>Attack: {attack}</label>
-        <input type="range" min="0" max="10" step="0.1" value={attack} onChange={(e) => setAttack(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
+        <input type="range" min="0" max="1" step="0.1" value={attack} onChange={(e) => setAttack(parseFloat(e.target.value))} onBlur={handleEnvelopeChange} />
     </div>
     <div>
         <label>Decay: {decay}</label>
